@@ -39,6 +39,7 @@ validateName(input) {
         <input
           type="text"
           name="newFolder"
+          required
         ></input>
         <button
           type="submit"
