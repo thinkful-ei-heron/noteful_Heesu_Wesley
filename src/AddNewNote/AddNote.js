@@ -12,28 +12,25 @@ class AddNote extends Component {
   }
   
 
-handleAddNoteButton = (event) => {
-  event.preventDefault();
-  const noteName=event.target.newNote.value;
-  const noteContent=event.target.noteContent.value
-  const folderId = event.target.selectFolder.value
-  this.validateName(noteName);
-  console.log(this.context);
-  this.context.addNoteApi(noteName,noteContent,folderId);
-};
- 
-validateName(input) { 
-  const name = input.trim(); 
-  if (name.length === 0) { 
-    console.log('name is required');
-    return 'Name is required'; 
+  handleAddNoteButton = (event) => {
+    event.preventDefault();
+    const noteName=event.target.newNote.value;
+    const noteContent=event.target.noteContent.value
+    const folderId = event.target.selectFolder.value
+    this.validateName(noteName);
+    console.log(this.context);
+    this.context.addNoteApi(noteName,noteContent,folderId);
+  };
+
+  validateName(input) { 
+    const name = input.trim(); 
+    if (name.length === 0) { 
+      console.log('name is required');
+      return 'Name is required'; 
+    }
   }
-}
-
-
 
   render() {
-
     return (
       <form
         className='AddNoteForm'
@@ -51,6 +48,7 @@ validateName(input) {
           name="noteContent"
           placeholder="Whatever you want"
         ></input>
+        
         <select
           name="selectFolder"
           required
