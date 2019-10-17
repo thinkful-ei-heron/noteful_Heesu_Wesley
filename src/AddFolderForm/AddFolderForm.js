@@ -1,30 +1,62 @@
 import React, { Component } from 'react';
 
-class AddFolderForm extends Component {
-  render() {
 
-    const handleAddFolderButton = (event) => {
-      event.preventDefault();
-      console.log('i ran');
-      const name = this.newFolder.current.value;
-      console.log('Name: ', name);
+// This is working to remove the white space. 
+const testString = "       ";
+console.log(testString.length);
+const filteredString = testString.trim();
+console.log(filteredString.length);
+
+
+
+class AddFolderForm extends Component {
+
+  // handleAddFolderButton = (event) => {
+  //   event.preventDefault();
+  // };
+  constructor(props) {
+    super(props);
+    this.state={
+     name: '' 
     };
 
+    this.nameInput = React.createRef();
+  }
+
+  setFormState = (event) => {
+    event.preventDefault();
+    const name = this.nameInput.current.value;
+    console.log('Name: ', name);
+    this.setState({
+      name: name
+    });
+    console.log(this.state)
+  };
+
+
+// use .trim and then evaluate the length. if >0 still good. 
+
+
+
+
+
+
+
+  render() {
     return (
-      <form>
+      <form
+        className='addFolderForm'
+        onSubmit={(e) => this.setFormState(e)}
+        >
         <label>Name of new folder</label>
         <input
           type="text"
           name="newFolder"
-
-          //Need to add a value tag that updates the this.state.
-          //On submit it should call an update the API function
+          ref={this.nameInput}
         ></input>
         <button
           type="submit"
-          name="submitButton"
-          onChange={(e) => this.handleAddFolderButton(e.target.value)}
-          >Submit</button>
+          name="submitButton">Submit</button>
       </form>
     );
   }
