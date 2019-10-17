@@ -13,7 +13,6 @@ export default function NavCircleButton(props) {
     props.children
   )
 }
-
 NavCircleButton.defaultProps ={
   tag: 'a',
 }

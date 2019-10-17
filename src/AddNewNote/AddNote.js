@@ -33,12 +33,7 @@ validateName(input) {
 
 
   render() {
-    // const { notes, folders, } = this.context
-    // const { noteId } = this.props.match.params
-    // const note = findNote(notes, noteId) || {}
-    // const folder = findFolder(folders, note.folderId)
 
-    console.log(this.context.folders)
     return (
       <form
         className='AddNoteForm'

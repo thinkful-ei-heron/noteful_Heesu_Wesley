@@ -6,6 +6,7 @@ import { findNote, findFolder } from '../notes-helpers'
 import './NotePageNav.css'
 import AddFolderForm from '../AddFolderForm/AddFolderForm';
 import AddNote from '../AddNewNote/AddNote';
+import PropTypes from "prop-types";
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {
@@ -24,7 +25,7 @@ export default class NotePageNav extends React.Component {
     const note = findNote(notes, noteId) || {}
     const folder = findFolder(folders, note.folderId)
 
-    //console.log(this.context)
+    console.log(this.props)
 
     return (
       <div className='NotePageNav'>
@@ -50,3 +51,9 @@ export default class NotePageNav extends React.Component {
     )
   }
 }
+NotePageNav.propTypes = {
+  //define prop types here
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+};

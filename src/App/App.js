@@ -7,6 +7,7 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
+import PropTypes from 'prop-types';
 import './App.css';
 import { ErrorBoundaries } from '../ErrorBoundaries';
 
@@ -120,7 +121,7 @@ class App extends Component {
             </>
         );
     }
-
+    
     render() {
         const value = {
             notes: this.state.notes,
@@ -129,6 +130,7 @@ class App extends Component {
             addFolderApi: this.addFolderApi,
             addNoteApi: this.addNoteApi,
         };
+
         return (
             <ErrorBoundaries>
             <ApiContext.Provider value={value}>
@@ -148,4 +150,11 @@ class App extends Component {
     }
 }
 
+
 export default App;
+
+
+// App.propTypes = {
+//     //define prop types here
+//     {console.log()}
+//   };
