@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
 
 
-class AddFolderForm extends Component {
+class AddNote extends Component {
   static ContextType = ApiContext;
 
   state= {
@@ -11,12 +11,12 @@ class AddFolderForm extends Component {
   }
   
 
-handleAddFolderButton = (event) => {
-  event.preventDefault();
-  const nameVal=event.target.newFolder.value;
-  console.log('Name: ', nameVal); 
-  this.props.addFolderApi(nameVal);
-};
+// handleAddFolderButton = (event) => {
+//   event.preventDefault();
+//   const nameVal=event.target.newFolder.value;
+//   console.log('Name: ', nameVal); 
+//   this.props.addFolderApi(nameVal);
+// };
  
 validateName(input) { 
   const name = input.trim(); 
@@ -30,13 +30,13 @@ validateName(input) {
     console.log(this.props)
     return (
       <form
-        className='addFolderForm'
-        onSubmit={(e) => this.handleAddFolderButton(e)}
+        className=''
+        onSubmit={(e) => this.(e)}
         >
-        <label>Name of new folder</label>
+        <label>Name of new Note</label>
         <input
           type="text"
-          name="newFolder"
+          name="newNew"
         ></input>
         <button
           type="submit"
@@ -46,4 +46,4 @@ validateName(input) {
   }
 }
 
-export default AddFolderForm;
+export default AddNote;

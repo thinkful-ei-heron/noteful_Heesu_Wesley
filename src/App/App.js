@@ -6,7 +6,6 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
-import AddFolderForm from '../AddFolderForm/AddFolderForm';
 import config from '../config';
 import './App.css';
 
@@ -47,6 +46,7 @@ class App extends Component {
         })
         .then(res => res.json())
         .then(data => {
+            console.log('add Folder ran');
             this.setState({
                 folders: [...this.state.folders, data]
             })
