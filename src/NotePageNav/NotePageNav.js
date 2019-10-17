@@ -34,7 +34,10 @@ export default class NotePageNav extends React.Component {
           <br />
           Back
         </CircleButton>
-        <AddFolderForm />
+        {console.log(this.props)}
+        <AddFolderForm 
+        
+        />
         {folder && (
           <h3 className='NotePageNav__folder-name'>
             {folder.name}

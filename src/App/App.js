@@ -6,7 +6,7 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
-//import AddFolderForm from '../AddFolderForm';
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
 import config from '../config';
 import './App.css';
 
@@ -36,6 +36,24 @@ class App extends Component {
                 console.error({error});
             });
     }
+
+    addFolderApi = (folderName) =>{
+        fetch(`${config.API_ENDPOINT}/folders`,{
+            method:'POST',
+            body: JSON.stringify({name:folderName}),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            this.setState({
+                folders: [...this.state.folders, data]
+            })
+        })
+        .catch(err => console.log(err));
+    }
+
 
     handleDeleteNote = noteId => {
         this.setState({

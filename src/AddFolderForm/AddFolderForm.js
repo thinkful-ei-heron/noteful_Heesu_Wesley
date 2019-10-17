@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
-// This is working to remove the white space.
+import ApiContext from '../ApiContext';
 
 class AddFolderForm extends Component {
+  static ContextType = ApiContext;
+
   state= {
     name: null,
     touched: false,
@@ -10,20 +11,21 @@ class AddFolderForm extends Component {
 
   handleAddFolderButton = (event) => {
      event.preventDefault();
-    //console.log(event.target.newFolder.value);
      const nameVal=event.target.newFolder.value;
      console.log('Name: ', nameVal);
   };
+ 
 
-// use .trim and then evaluate the length. if >0 still good. 
-validateName() { 
-  const name = this.state.name.trim(); 
+validateName(input) { 
+  const name = input.trim(); 
   if (name.length === 0) { 
+    console.log('name is required');
     return 'Name is required'; 
   }
 }
 
   render() {
+    console.log(this.context);
     return (
       <form
         className='addFolderForm'

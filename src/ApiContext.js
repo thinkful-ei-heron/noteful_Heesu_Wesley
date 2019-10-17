@@ -8,4 +8,5 @@ export default React.createContext({
   addNote: () => {},
 
   deleteNote: () => {},
+  addFolderApi: () => {}
 });
