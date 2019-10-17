@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
+//import { getNotesForFolder } from '../notes-helpers'
 
 
 class AddNote extends Component {
-  static ContextType = ApiContext;
+  static contextType = ApiContext;
 
   state= {
     name: null,
@@ -11,12 +12,13 @@ class AddNote extends Component {
   }
   
 
-// handleAddFolderButton = (event) => {
-//   event.preventDefault();
-//   const nameVal=event.target.newFolder.value;
-//   console.log('Name: ', nameVal); 
-//   this.props.addFolderApi(nameVal);
-// };
+handleAddNoteButton = (event) => {
+  event.preventDefault();
+  const noteName=event.target.newNote.value;
+  const noteContent=event.target.noteContent.value
+  console.log(noteName, noteContent);
+   
+};
  
 validateName(input) { 
   const name = input.trim(); 
@@ -26,18 +28,36 @@ validateName(input) {
   }
 }
 
+
+
   render() {
+    // const { folderId } = this.props.match.params
+    // const { notes=[] } = this.context
+    // const notesForFolder = getNotesForFolder(notes, folderId)
+
     console.log(this.props)
     return (
       <form
-        className=''
-        onSubmit={(e) => this.(e)}
+        className='AddNoteForm'
+        onSubmit={(e) => this.handleAddNoteButton(e)}
         >
         <label>Name of new Note</label>
         <input
           type="text"
-          name="newNew"
+          name="newNote"
+          placeholder="noteName"
         ></input>
+        <input
+          type="text"
+          name="noteContent"
+          placeholder="Whatever you want"
+        ></input>
+        
+        {/* <select> This needs to be able to pull the available folders. 
+          
+          <option>Option 01</option>
+        </select> */}
+
         <button
           type="submit"
           name="submitButton">Submit</button>

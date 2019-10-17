@@ -7,6 +7,7 @@ import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
 import './NoteListMain.css'
 
+
 export default class NoteListMain extends React.Component {
   static defaultProps = {
     match: {
@@ -19,6 +20,7 @@ export default class NoteListMain extends React.Component {
     const { folderId } = this.props.match.params
     const { notes=[] } = this.context
     const notesForFolder = getNotesForFolder(notes, folderId)
+
     return (
       <section className='NoteListMain'>
         <ul>
@@ -33,6 +35,7 @@ export default class NoteListMain extends React.Component {
           )}
         </ul>
         <div className='NoteListMain__button-container'>
+       
           <CircleButton
             tag={Link}
             to='/add-note'

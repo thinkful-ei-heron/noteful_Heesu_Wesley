@@ -14,20 +14,22 @@ class AddFolderForm extends Component {
 handleAddFolderButton = (event) => {
   event.preventDefault();
   const nameVal=event.target.newFolder.value;
-  console.log('Name: ', nameVal); 
-  this.props.addFolderApi(nameVal);
+  const validatedName = this.validateName(nameVal)
+  //console.log('Name: ', nameVal);
+
+  this.props.addFolderApi(validatedName);
 };
  
 validateName(input) { 
   const name = input.trim(); 
   if (name.length === 0) { 
-    console.log('name is required');
-    return 'Name is required'; 
+   // console.log('name is required');
+    console.log('that failed'); 
   }
 }
 
   render() {
-    console.log(this.props)
+    //console.log(this.props)
     return (
       <form
         className='addFolderForm'
