@@ -4,6 +4,7 @@ import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { findNote, findFolder } from '../notes-helpers'
 import './NotePageNav.css'
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
 
 export default class NotePageNav extends React.Component {
   static defaultProps = {
@@ -23,6 +24,7 @@ export default class NotePageNav extends React.Component {
     const folder = findFolder(folders, note.folderId)
     return (
       <div className='NotePageNav'>
+      <AddFolderForm />
         <CircleButton
           tag='button'
           role='link'
