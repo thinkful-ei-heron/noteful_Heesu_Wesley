@@ -3,6 +3,7 @@ import Note from '../Note/Note'
 import ApiContext from '../ApiContext'
 import { findNote } from '../notes-helpers'
 import './NotePageMain.css'
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
 
 export default class NotePageMain extends React.Component {
   static defaultProps = {
@@ -22,12 +23,14 @@ export default class NotePageMain extends React.Component {
     const note = findNote(notes, noteId) || { content: '' }
     return (
       <section className='NotePageMain'>
+    
         <Note
           id={note.id}
           name={note.name}
           modified={note.modified}
           onDeleteNote={this.handleDeleteNote}
-        />
+        />    
+        <AddFolderForm />
         <div className='NotePageMain__content'>
           {note.content.split(/\n \r|\n/).map((para, i) =>
             <p key={i}>{para}</p>

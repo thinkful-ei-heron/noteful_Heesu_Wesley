@@ -6,6 +6,7 @@ import NotePageNav from '../NotePageNav/NotePageNav';
 import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
+//import AddFolderForm from '../AddFolderForm';
 import config from '../config';
 import './App.css';
 
@@ -41,8 +42,6 @@ class App extends Component {
             notes: this.state.notes.filter(note => note.id !== noteId)
         });
     };
-
-
 
     renderNavRoutes() {
         return (

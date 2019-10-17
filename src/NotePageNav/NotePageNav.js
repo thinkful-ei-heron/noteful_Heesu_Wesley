@@ -24,7 +24,6 @@ export default class NotePageNav extends React.Component {
     const folder = findFolder(folders, note.folderId)
     return (
       <div className='NotePageNav'>
-      <AddFolderForm />
         <CircleButton
           tag='button'
           role='link'
@@ -35,6 +34,7 @@ export default class NotePageNav extends React.Component {
           <br />
           Back
         </CircleButton>
+        <AddFolderForm />
         {folder && (
           <h3 className='NotePageNav__folder-name'>
             {folder.name}
