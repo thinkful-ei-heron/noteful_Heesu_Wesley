@@ -15,9 +15,9 @@ handleAddFolderButton = (event) => {
   event.preventDefault();
   const nameVal=event.target.newFolder.value;
   const validatedName = this.validateName(nameVal)
-  //console.log('Name: ', nameVal);
+  console.log(this.validateName(validatedName));
 
-  this.props.addFolderApi(validatedName);
+  this.context.addFolderApi(validatedName);
 };
  
 validateName(input) { 
@@ -26,6 +26,7 @@ validateName(input) {
    // console.log('name is required');
     console.log('that failed'); 
   }
+  return name;
 }
 
   render() {

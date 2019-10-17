@@ -8,6 +8,7 @@ import NotePageMain from '../NotePageMain/NotePageMain';
 import ApiContext from '../ApiContext';
 import config from '../config';
 import './App.css';
+import { ErrorBoundaries } from '../ErrorBoundaries';
 
 class App extends Component {
     state = {
@@ -53,6 +54,31 @@ class App extends Component {
         })
         .catch(err => console.log(err));
     }
+
+
+    addNoteApi = (noteName,noteContent, folderId) =>{
+        fetch(`${config.API_ENDPOINT}/folders/${folderId}/notes`,{
+            method:'POST',
+            body: JSON.stringify({
+                name:noteName,
+                content: noteContent,
+                modified: Date.now()
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('add Note ran');
+            this.setState({
+                notes: [...this.state.notes, data]
+            })
+        })
+        .catch(err => console.log(err));
+    }
+
+
 
 
     handleDeleteNote = noteId => {
@@ -101,8 +127,10 @@ class App extends Component {
             folders: this.state.folders,
             deleteNote: this.handleDeleteNote,
             addFolderApi: this.addFolderApi,
+            addNoteApi: this.addNoteApi,
         };
         return (
+            <ErrorBoundaries>
             <ApiContext.Provider value={value}>
                 <div className="App">
                     <nav className="App__nav">{this.renderNavRoutes()}</nav>
@@ -115,6 +143,7 @@ class App extends Component {
                     <main className="App__main">{this.renderMainRoutes()}</main>
                 </div>
             </ApiContext.Provider>
+            </ErrorBoundaries>
         );
     }
 }

@@ -16,8 +16,10 @@ handleAddNoteButton = (event) => {
   event.preventDefault();
   const noteName=event.target.newNote.value;
   const noteContent=event.target.noteContent.value
-  console.log(noteName, noteContent);
-   
+  const folderId = event.target.selectFolder.value
+  this.validateName(noteName);
+  console.log(this.context);
+  this.context.addNoteApi(noteName,noteContent,folderId);
 };
  
 validateName(input) { 
@@ -31,11 +33,12 @@ validateName(input) {
 
 
   render() {
-    // const { folderId } = this.props.match.params
-    // const { notes=[] } = this.context
-    // const notesForFolder = getNotesForFolder(notes, folderId)
+    // const { notes, folders, } = this.context
+    // const { noteId } = this.props.match.params
+    // const note = findNote(notes, noteId) || {}
+    // const folder = findFolder(folders, note.folderId)
 
-    console.log(this.props)
+    console.log(this.context.folders)
     return (
       <form
         className='AddNoteForm'
@@ -46,17 +49,27 @@ validateName(input) {
           type="text"
           name="newNote"
           placeholder="noteName"
+          required
         ></input>
         <input
           type="text"
           name="noteContent"
           placeholder="Whatever you want"
         ></input>
-        
-        {/* <select> This needs to be able to pull the available folders. 
-          
-          <option>Option 01</option>
-        </select> */}
+        <select
+          name="selectFolder"
+          required
+        >{this.context.folders.map(folder =>{
+          return(
+            <option
+              name={folder.name}
+              key={Math.random()}
+              id={folder.id}
+              value={folder.id}
+            >{folder.name}</option> 
+          )
+        })} 
+        </select>
 
         <button
           type="submit"
@@ -67,3 +80,7 @@ validateName(input) {
 }
 
 export default AddNote;
+
+
+
+

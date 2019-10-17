@@ -11,4 +11,6 @@ export default React.createContext({
 
   addFolderApi: () => {},
 
+  addNoteApi: () => {},
+
 });

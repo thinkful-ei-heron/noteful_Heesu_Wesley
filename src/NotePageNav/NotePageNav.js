@@ -39,7 +39,6 @@ export default class NotePageNav extends React.Component {
           Back
         </CircleButton>
         <AddFolderForm 
-          addFolderApi={this.context.addFolderApi}
         />
         <AddNote />
         {folder && (
