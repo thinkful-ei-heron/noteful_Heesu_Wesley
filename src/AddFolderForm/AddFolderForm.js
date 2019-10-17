@@ -3,7 +3,7 @@ import ApiContext from '../ApiContext';
 
 
 class AddFolderForm extends Component {
-  static ContextType = ApiContext;
+  static contextType = ApiContext;
 
   state= {
     name: null,
