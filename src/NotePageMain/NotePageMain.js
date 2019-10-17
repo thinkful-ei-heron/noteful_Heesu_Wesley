@@ -41,6 +41,7 @@ export default class NotePageMain extends React.Component {
     )
   }
 }
+
 NotePageMain.propTypes = {
   //define prop types here
   history: PropTypes.object,

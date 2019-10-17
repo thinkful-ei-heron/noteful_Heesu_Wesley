@@ -45,6 +45,7 @@ export default class NoteListNav extends React.Component {
     )
   }
 }
+
 NoteListNav.propTypes = {
   //define prop types here
   history: PropTypes.object,

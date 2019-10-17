@@ -150,9 +150,7 @@ class App extends Component {
     }
 }
 
-
 export default App;
-
 
 // App.propTypes = {
 //     //define prop types here

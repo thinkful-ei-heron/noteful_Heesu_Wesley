@@ -76,6 +76,3 @@ validateName(input) {
 
 export default AddNote;
 
-
-
-
