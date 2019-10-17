@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
 
+
 class AddFolderForm extends Component {
   static ContextType = ApiContext;
 
@@ -8,11 +9,14 @@ class AddFolderForm extends Component {
     name: null,
     touched: false,
   }
+  
 
   handleAddFolderButton = (event) => {
-     event.preventDefault();
-     const nameVal=event.target.newFolder.value;
-     console.log('Name: ', nameVal);
+    event.preventDefault();
+    const nameVal=event.target.newFolder.value;
+    console.log('Name: ', nameVal);
+    console.log(this.context);
+  
   };
  
 
