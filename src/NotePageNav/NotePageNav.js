@@ -41,7 +41,7 @@ export default class NotePageNav extends React.Component {
         </CircleButton>
         <AddFolderForm 
         />
-        <AddNote />
+        {/* <AddNote /> */}
         {folder && (
           <h3 className='NotePageNav__folder-name'>
             {folder.name}

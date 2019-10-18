@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
+import './AddNote.css';
 //import { getNotesForFolder } from '../notes-helpers'
 
 
@@ -52,6 +53,7 @@ class AddNote extends Component {
           name="newNote"
           placeholder="noteName"
         ></input>
+        <label>What do you want to write?</label>
         <input
           type="text"
           name="noteContent"

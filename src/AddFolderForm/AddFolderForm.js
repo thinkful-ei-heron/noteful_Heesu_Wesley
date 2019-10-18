@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ApiContext from '../ApiContext';
-
+import './AddFolderForm.css';
 
 class AddFolderForm extends Component {
   static contextType = ApiContext;
