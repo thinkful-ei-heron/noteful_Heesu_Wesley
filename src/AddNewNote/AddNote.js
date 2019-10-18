@@ -9,6 +9,7 @@ class AddNote extends Component {
   state= {
     name: null,
     touched: false,
+    error: false,
   }
   
 
@@ -25,10 +26,19 @@ class AddNote extends Component {
   validateName(input) { 
     const name = input.trim(); 
     if (name.length === 0) { 
-      console.log('name is required');
-      return 'Name is required'; 
+      this.setState({
+        error: true
+      })
+      console.log('the form value is 0');
     }
   }
+
+  renderError =() => {
+    if(this.state.error === true){
+      return `A note has no name`
+    }
+   }
+
 
   render() {
     return (
@@ -41,7 +51,6 @@ class AddNote extends Component {
           type="text"
           name="newNote"
           placeholder="noteName"
-          required
         ></input>
         <input
           type="text"
@@ -63,7 +72,7 @@ class AddNote extends Component {
           )
         })} 
         </select>
-
+        {this.renderError()}
         <button
           type="submit"
           name="submitButton">Submit</button>

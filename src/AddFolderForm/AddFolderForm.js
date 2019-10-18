@@ -8,6 +8,7 @@ class AddFolderForm extends Component {
   state= {
     name: null,
     touched: false,
+    error: false,
   }
   
 
@@ -15,17 +16,24 @@ handleAddFolderButton = (event) => {
   event.preventDefault();
   const nameVal=event.target.newFolder.value;
   const validatedName = this.validateName(nameVal)
-  console.log(this.validateName(validatedName));
-
   this.context.addFolderApi(validatedName);
 };
+
+renderError =() => {
+ if(this.state.error === true){
+   return `A form has no name`
+ }
+}
  
 validateName(input) { 
   const name = input.trim(); 
   if (name.length === 0) { 
-   // console.log('name is required');
-    console.log('that failed'); 
+    this.setState({
+      error: true
+    })
+    console.log('the form value is 0');
   }
+  console.log(name.length)
   return name;
 }
 
@@ -39,8 +47,9 @@ validateName(input) {
         <input
           type="text"
           name="newFolder"
-          required
+
         ></input>
+        {this.renderError()}
         <button
           type="submit"
           name="submitButton">Submit</button>

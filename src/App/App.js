@@ -10,6 +10,8 @@ import config from '../config';
 import PropTypes from 'prop-types';
 import './App.css';
 import { ErrorBoundaries } from '../ErrorBoundaries';
+import AddNote from '../AddNewNote/AddNote';
+import AddFolderForm from '../AddFolderForm/AddFolderForm';
 
 class App extends Component {
     state = {
@@ -39,6 +41,9 @@ class App extends Component {
     }
 
     addFolderApi = (folderName) =>{
+        if(folderName.length === 0){
+            return `no bro`
+        } else { 
         fetch(`${config.API_ENDPOINT}/folders`,{
             method:'POST',
             body: JSON.stringify({name:folderName}),
@@ -55,9 +60,12 @@ class App extends Component {
         })
         .catch(err => console.log(err));
     }
-
+}
 
     addNoteApi = (noteName,noteContent, folderId) =>{
+        if (noteName.length === 0 ){
+            return `whoops`
+        } else {
         fetch(`${config.API_ENDPOINT}/folders/${folderId}/notes`,{
             method:'POST',
             body: JSON.stringify({
@@ -78,7 +86,7 @@ class App extends Component {
         })
         .catch(err => console.log(err));
     }
-
+}
 
 
 
@@ -101,7 +109,7 @@ class App extends Component {
                 ))}
                 <Route path="/note/:noteId" component={NotePageNav} />
                 <Route path="/add-folder" component={NotePageNav} />
-                <Route path="/add-note" component={NotePageNav} />
+                <Route path="/add-note" component={AddNote} />
             </>
         );
     }
